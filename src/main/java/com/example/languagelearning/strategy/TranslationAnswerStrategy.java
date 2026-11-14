@@ -2,11 +2,10 @@ package com.example.languagelearning.strategy;
 
 public class TranslationAnswerStrategy implements AnswerStrategy {
     @Override
-    public boolean isCorrect(String expectedAnswer, String answer) {
-        return answer != null && normalize(expectedAnswer).equals(normalize(answer));
-    }
-
-    private String normalize(String value) {
-        return value.trim().toLowerCase().replaceAll("[.!?]$", "");
+    public boolean checkAnswer(String userAnswer, String correctAnswer) {
+        if (userAnswer == null || correctAnswer == null) return false;
+        String normalizedUser = userAnswer.trim().toLowerCase().replaceAll("\\s+", " ");
+        String normalizedCorrect = correctAnswer.trim().toLowerCase().replaceAll("\\s+", " ");
+        return normalizedUser.equals(normalizedCorrect);
     }
 }

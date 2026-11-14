@@ -1,5 +1,5 @@
 package com.example.languagelearning.strategy;
 
 public interface AnswerStrategy {
-    boolean isCorrect(String expectedAnswer, String answer);
+    boolean checkAnswer(String userAnswer, String correctAnswer);
 }
