@@ -2,7 +2,8 @@ package com.example.languagelearning.strategy;
 
 public class MultipleChoiceAnswerStrategy implements AnswerStrategy {
     @Override
-    public boolean isCorrect(String expectedAnswer, String answer) {
-        return answer != null && expectedAnswer.equalsIgnoreCase(answer.trim());
+    public boolean checkAnswer(String userAnswer, String correctAnswer) {
+        if (userAnswer == null || correctAnswer == null) return false;
+        return userAnswer.trim().equals(correctAnswer.trim());
     }
 }
