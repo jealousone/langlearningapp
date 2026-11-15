@@ -1,4 +1,4 @@
-const API = "/api";
+const API = "http://localhost:8080/api";
 const view = document.getElementById("app-view");
 let currentLesson = null;
 let currentIndex = 0;

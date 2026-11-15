@@ -5,9 +5,11 @@ import com.example.languagelearning.service.AppService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
-
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = {
+        "http://localhost:5500",
+        "http://127.0.0.1:5500",})
 public class AppController {
     private final AppService appService;
     private final Settings appSettings;
