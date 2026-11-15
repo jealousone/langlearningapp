@@ -13,7 +13,7 @@ public class ProgressSubject {
     public void removeListener(ProgressListener listener) {
         listeners.remove(listener);
     }
-    void notifyListeners(String exerciseId, boolean correct, int earnedPoints) {
+    public void notifyListeners(String exerciseId, boolean correct, int earnedPoints) {
         for (ProgressListener listener : List.copyOf(listeners)){
             listener.onExerciseCompleted(exerciseId, correct, earnedPoints);
         }
