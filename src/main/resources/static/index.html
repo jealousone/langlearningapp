@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lingua — Language Learning</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app-shell">
+    <aside class="sidebar">
+        <a class="brand" href="#" data-page="home"><span class="brand-mark">L</span><span>lingua<span class="brand-dot">.</span></span></a>
+        <div class="side-label">MENU</div>
+        <nav>
+            <button class="nav-link active" data-page="home"><span>⌂</span> Overview</button>
+            <button class="nav-link" data-page="lessons"><span>▤</span> My lessons</button>
+            <button class="nav-link" data-page="progress"><span>◷</span> My progress</button>
+            <button class="nav-link" data-page="settings"><span>⚙</span> Settings</button>
+        </nav>
+        <div class="sidebar-bottom">
+            <div class="mini-card">
+                <div class="mini-icon">✦</div>
+                <strong>Keep it up!</strong>
+                <p>A little practice every day makes a big difference.</p>
+            </div>
+            <div class="profile">
+                <div class="avatar">AL</div>
+                <div><strong>Language learner</strong><small>Beginner level</small></div>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="topbar">
+            <div>
+                <div class="eyebrow">YOUR LEARNING SPACE</div>
+                <h1 id="page-title">Good afternoon! <span>✦</span></h1>
+            </div>
+            <div class="top-actions">
+                <div class="streak"><span>🔥</span> <strong id="streak-value">1</strong><small>day streak</small></div>
+                <div class="top-avatar">AL</div>
+            </div>
+        </header>
+        <section id="app-view" aria-live="polite">
+            <div class="loading">Loading your learning space...</div>
+        </section>
+        <footer>Made for curious minds <span>✦</span> Keep learning, one word at a time.</footer>
+    </main>
+</div>
+<div id="toast" class="toast"></div>
+<script src="app.js"></script>
+</body>
+</html>
