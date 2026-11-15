@@ -5,7 +5,6 @@ import com.example.languagelearning.model.Lesson;
 import java.util.ArrayList;
 import java.util.List;
 
-// Builder: constructs a Lesson step by step.
 public class LessonBuilder {
     private String id;
     private String title;
