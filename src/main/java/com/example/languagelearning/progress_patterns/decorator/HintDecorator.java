@@ -5,7 +5,7 @@ import com.example.languagelearning.model.Exercise;
 public class HintDecorator extends ExerciseDecorator{
     private final String hint;
 
-    public HintDecorator(Exercise exercise) {
+    public HintDecorator(Exercise exercise, String hint) {
         super(exercise);
         this.hint = exercise.getHint();
     }
