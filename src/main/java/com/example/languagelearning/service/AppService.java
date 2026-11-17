@@ -80,6 +80,7 @@ public class AppService {
                 .addExercise(e4)
                 .addExercise(e5)
                 .build();
+        lessons.put(basics.getId(), basics);
 
         Exercise e6 = multChoiceCreator.createExercise(
                 "ex6", "Choose the Spanish word for 'book'.",

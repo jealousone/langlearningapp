@@ -57,7 +57,14 @@ async function showHome() {
         </div>
         <div class="section-head"><h2>Pick up where you left off</h2><button class="text-button" id="all-lessons">VIEW ALL →</button></div>
         <div class="lesson-grid">${lessons.map(lessonCard).join("")}</div>`;
-    document.getElementById("start-learning").onclick = () => openLesson(lessons[0].id);
+    document.getElementById("start-learning").onclick = () => {
+        if (!lessons || lessons.length === 0) {
+            toast("No lessons available. Please try again later.");
+            return;
+        }
+
+        openLesson(lessons[0].id);
+    };
     document.getElementById("all-lessons").onclick = showLessons;
     attachLessonButtons();
 }
@@ -111,10 +118,10 @@ function renderExercise() {
                 <div class="question-type">${exercise.type.replaceAll("_", " ")}</div>
                 <h2>${escapeHtml(exercise.question)}</h2>
                 ${isChoice
-                    ? `<div class="options">${exercise.options.map(option =>
-                        `<button class="option ${selectedOption === option ? "selected" : ""}" data-option="${escapeHtml(option)}">${escapeHtml(option)}</button>`
-                      ).join("")}</div>`
-                    : `<input class="answer-input" id="answer-input" placeholder="Type your answer here..." autocomplete="off" value="${escapeHtml(answers[exercise.id] || "")}">`}
+            ? `<div class="options">${exercise.options.map(option =>
+                `<button class="option ${selectedOption === option ? "selected" : ""}" data-option="${escapeHtml(option)}">${escapeHtml(option)}</button>`
+            ).join("")}</div>`
+            : `<input class="answer-input" id="answer-input" placeholder="Type your answer here..." autocomplete="off" value="${escapeHtml(answers[exercise.id] || "")}">`}
                 <div class="hint" id="hint-area"></div>
                 <div class="exercise-actions">
                     <button class="text-button" id="hint-button">💡 Show hint</button>
@@ -203,8 +210,8 @@ async function showProgress() {
         <div class="section-head"><h2>Your achievements</h2></div>
         <div class="panel"><div class="achievement-list">
             ${progress.achievements.length
-                ? progress.achievements.map((a, i) => `<div class="achievement"><div class="achievement-icon">${["🏅","⭐","🌟"][i % 3]}</div><strong>${escapeHtml(a)}</strong></div>`).join("")
-                : `<p class="page-intro">Complete an exercise to unlock your first achievement.</p>`}
+            ? progress.achievements.map((a, i) => `<div class="achievement"><div class="achievement-icon">${["🏅", "⭐", "🌟"][i % 3]}</div><strong>${escapeHtml(a)}</strong></div>`).join("")
+            : `<p class="page-intro">Complete an exercise to unlock your first achievement.</p>`}
         </div></div>`;
 }
 
@@ -217,8 +224,8 @@ async function showSettings() {
         <div class="panel">
             <div class="settings-row"><div><strong>Learning language</strong><p>Choose the language you are currently studying.</p></div>
                 <select id="language-select">
-                    ${["Spanish","English","German","French","Italian"].map(language =>
-                        `<option ${settings.language === language ? "selected" : ""}>${language}</option>`).join("")}
+                    ${["Spanish", "English", "German", "French", "Italian"].map(language =>
+        `<option ${settings.language === language ? "selected" : ""}>${language}</option>`).join("")}
                 </select>
             </div>
             <div class="settings-row"><div><strong>Learning mode</strong><p>Practice with short lessons and quick exercises.</p></div><span class="tag">Beginner</span></div>
@@ -234,7 +241,7 @@ async function showSettings() {
 
 function escapeHtml(value) {
     return String(value ?? "").replace(/[&<>"']/g, char => ({
-        "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;"
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
     }[char]));
 }
 
